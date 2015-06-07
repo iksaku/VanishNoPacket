@@ -1,4 +1,4 @@
-name: Vanish (No Packet)
+name: VanishNP
 main: VanishNP\Loader
 version: 1.0.0
 api: 1.12.0
