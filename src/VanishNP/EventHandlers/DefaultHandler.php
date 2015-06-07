@@ -22,6 +22,9 @@ class DefaultHandler implements Listener{
      */
     public function onPlayerJoin(PlayerJoinEvent $event){
         $this->plugin->createSession($event->getPlayer());
+        foreach($event->getPlayer()->getLevel()->getPlayers() as $p){
+            $event->getPlayer()->hidePlayer($p);
+        }
     }
 
     /**
