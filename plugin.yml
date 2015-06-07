@@ -1,0 +1,16 @@
+name: Vanish (No Packet)
+main: VanishNP\Loader
+version: 1.0.0
+api: 1.12.0
+author: iksaku
+softdepend:
+  - EssentialsPE
+
+permissions:
+  vanish:
+    default: op
+    description: "Get vanished!"
+    chidren:
+      vanish.other:
+        default: op
+        dewsription: "Vanish other players!"
