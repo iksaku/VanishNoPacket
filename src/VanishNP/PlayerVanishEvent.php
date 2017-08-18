@@ -8,13 +8,16 @@ use pocketmine\Player;
 class PlayerVanishEvent extends PluginEvent implements Cancellable{
     public static $handlerList = null;
 
-    /** @var Player  */
+    /** @var Player $player */
     protected $player;
-    /** @var bool  */
+
+    /** @var bool $isVanished */
     protected $isVanished;
-    /** @var bool */
+
+    /** @var bool $willVanish */
     protected $willVanish;
-    /** @var array */
+
+    /** @var string[] $keepHiddenFor */
     protected $keepHiddenFor = [];
 
     /**
@@ -22,73 +25,51 @@ class PlayerVanishEvent extends PluginEvent implements Cancellable{
      * @param Player $player
      * @param bool $willVanish
      */
-    public function __construct(Loader $plugin, Player $player, $willVanish){
+    public function __construct(Loader $plugin, Player $player, bool $willVanish) {
         parent::__construct($plugin);
         $this->player = $player;
         $this->isVanished = $plugin->isVanished($player);
         $this->willVanish = $willVanish;
     }
-
     /**
-     * Return the player that will be vanished/shown
-     *
      * @return Player
      */
-    public function getPlayer(){
+    public function getPlayer() {
         return $this->player;
     }
 
     /**
-     * Tell if the player is already vanished or not
-     *
      * @return bool
      */
-    public function isVanished(){
+    public function isVanished() {
         return $this->isVanished;
     }
 
     /**
-     * Tell if the player will be vanished or showed
-     * false = Player will be showed
-     * true = Player will be vanished
-     *
      * @return bool
      */
-    public function willVanish(){
+    public function willVanish() {
         return $this->willVanish;
     }
 
     /**
-     * Change the vanish mode that will be set
-     * false = Player will be shown
-     * true = Player will be vanished
-     *
      * @param bool $value
      */
-    public function setVanished($value){
-        if(is_bool($value)){
-            $this->willVanish = $value;
-        }
+    public function setVanished(bool $value) {
+	    $this->willVanish = $value;
     }
 
     /**
-     * This method will allow you to keep a player
-     * hidden to other players, but EssentialsPE
-     * will no longer consider it has "Vanished"
-     *
      * @param Player $player
      */
-    public function keepHiddenFor(Player $player){
+    public function keepHiddenFor(Player $player) {
         $this->keepHiddenFor[] = $player->getName();
     }
 
     /**
-     * Return a list with all the players that
-     * will not see the "unVanished" player
-     *
-     * @return array
+     * @return string[]
      */
-    public function getHiddenFor(){
+    public function getHiddenFor() {
         return $this->keepHiddenFor;
     }
 }

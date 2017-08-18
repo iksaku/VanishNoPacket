@@ -6,7 +6,7 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use VanishNP\Loader;
 
-class DefaultHandler implements Listener{
+class DefaultHandler implements Listener {
     /** @var Loader */
     private $plugin;
 

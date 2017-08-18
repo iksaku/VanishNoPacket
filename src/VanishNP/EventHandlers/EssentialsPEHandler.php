@@ -5,7 +5,7 @@ use EssentialsPE\Events\PlayerVanishEvent;
 use EssentialsPE\Events\SessionCreateEvent;
 use pocketmine\event\Listener;
 
-class EssentialsPEHandler implements Listener{
+class EssentialsPEHandler implements Listener {
     /**
      * @param SessionCreateEvent $event
      *
